@@ -1,4 +1,4 @@
-#Twist Konsolenapp
+# Twist-Console
 Twist Konsolenapp by Felix L.
 
 Mit "help" können sie alle Kommandos aufrufen.
