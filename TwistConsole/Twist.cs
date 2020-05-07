@@ -7,12 +7,13 @@ namespace TwistConsole
     class Twist
     {
 
+        //Pfad zur Wortliste
         public static String WortlistePfad = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\C#TestOrdner\\woerterliste.txt";
 
         public static void ConsoleMenu()
         {
             //Starttext schreiben
-            Console.WriteLine("Was möchtest du machen?");
+            Console.WriteLine("Was möchtest du machen?\nUm zu erfahren was du alles machen kannst benutze \"help\"");
             //Warte auf Eingabe
             String Command = Console.ReadLine();
             //Konsole bereinigen & entsprechende Befehle auf Basis der Eingabe ausführen
@@ -21,14 +22,14 @@ namespace TwistConsole
             {
                 //Twisten wird gestartet
                 case "Twist":
-                    Console.Write("Twist\nEingabe: ");
-                    Console.WriteLine("Ausgabe: " + Twist.Twisten(Console.ReadLine()));
+                    Console.Write("Twist\nGebe ein Wort oder Satz ein um diese jeweils zu twisten.\n\nEingabe: ");
+                    Console.WriteLine("\nAusgabe: " + Twist.Twisten(Console.ReadLine()));
                     Console.ReadKey();
                     break;
                 //Enttwisten wird gestartet
                 case "Enttwist":
-                    Console.Write("Enttwist\nEingabe: ");
-                    Console.WriteLine("Ausgabe: " + Twist.Enttwisten(Console.ReadLine()));
+                    Console.Write("Enttwist\nGebe ein Wort ein um dieses zu Entwisten.\n\nEingabe: ");
+                    Console.WriteLine("\nAusgabe: " + Twist.Enttwisten(Console.ReadLine()));
                     Console.ReadKey();
                     break;
                 //Legt den Pfad der Wortliste fest (Startwert: Dokumente\C#TestOrdner\woerterliste.txt)
@@ -39,7 +40,7 @@ namespace TwistConsole
                     break;
                 //"help" gibt alle gültigen Kommandos aus
                 case "help":
-                    Console.WriteLine("Gültige Kommandos sind:\nTwist\t\tZum twisten eines Wortes oder Satzes(ohne Sonderzeichen)\nEnttwist\tZum enttwisten eines Wortes\nWortliste\tFestlegen des Pfads der Wortliste\nhelp\t\tgültige Kommandos\nexit\t\tVerlassen der Anwendung");
+                    Console.WriteLine("Gültige Kommandos sind:\n\nTwist\t\tZum twisten eines Wortes oder Satzes(ohne Sonderzeichen)\nEnttwist\tZum enttwisten eines Wortes\nWortliste\tFestlegen des Pfads der Wortliste\nhelp\t\tgültige Kommandos\nexit\t\tVerlassen der Anwendung");
                     Console.ReadKey();
                     break;
                 //"exit" beendet die Anwendung
@@ -94,6 +95,7 @@ namespace TwistConsole
 
             //Eingabe zu CharArray & alles klein machen (z.B. F->f)
             char[] EGCharArray = EG.ToLower().ToCharArray();
+            if (EGCharArray.Length == 0) return "";
             //Array nach Alphabetischer Ordnung sortieren
             Array.Sort(EGCharArray);
 
@@ -151,6 +153,5 @@ namespace TwistConsole
             //Zurückgeben des StringArray
             return RStringA;
         }
-
     }
 }
